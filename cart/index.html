@@ -1,3 +1,66 @@
-<h1>ショッピングカート</h1>
+<!DOCTYPE html>
+<html lang="ja">
 
-<h2>ご注文一覧</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ショッピングカート</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ショッピングカート</h1>
+    <div id="cart">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+
+            </tbody>
+        </table>
+        <div id="summary">
+            <p>小計: <span id="subtotal">0円</span></p>
+            <p>配送料: <span id="shipping-fee">0円</span></p>
+            <p>合計: <span id="total">0円</span></p>
+        </div>
+        <div class="button-container">
+            <button onclick="goBack()">戻る</button>
+            <button onclick="purchase()">購入</button>
+        </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+
+</body>
+
+</html>
