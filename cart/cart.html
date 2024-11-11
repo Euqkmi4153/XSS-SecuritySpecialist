@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ショッピングカート</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ショッピングカート</h1>
+    <div id="cart">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+
+            </tbody>
+        </table>
+        <div id="summary">
+            <p>小計: <span id="subtotal">0円</span></p>
+            <p>配送料: <span id="shipping-fee">0円</span></p>
+            <p>合計: <span id="total">0円</span></p>
+        </div>
+        <div class="button-container">
+            <button onclick="goBack()">戻る</button>
+            <button onclick="purchase()">購入</button>
+        </div>
+    </div>
+
+    <!-- <script type="module" src="index.js"></script> 
+     -->
+    <script>
+        const products = [
+            { no: 1, name: "商品1", price: 30000, quantity: 1 },
+            { no: 2, name: "商品2", price: 7500, quantity: 1 },
+            { no: 3, name: "商品3", price: 15000, quantity: 1 },
+        ];
+
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            cartItemsContainer.innerHTML = "";
+
+            products.forEach(product => {
+                const row = document.createElement("tr");
+
+
+                row.innerHTML = `
+                <td>${product.no}</td>
+                <td>${product.name}</td>
+                <td>${product.price.toLocaleString()}円</td>
+                <td>${product.quantity}</td>
+            `;
+
+                cartItemsContainer.appendChild(row);
+            });
+
+
+            updateSummary();
+        }
+
+
+        function updateSummary() {
+            const subtotal = products.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            const shippingFee = 0;
+            const total = subtotal + shippingFee;
+
+            document.getElementById("subtotal").textContent = `${subtotal.toLocaleString()}円`;
+            document.getElementById("shipping-fee").textContent = `${shippingFee.toLocaleString()}円`;
+            document.getElementById("total").textContent = `${total.toLocaleString()}円`;
+        }
+
+
+        function goBack() {
+            alert("前のページに戻ります。");
+
+        }
+
+
+        function purchase() {
+            alert("購入が完了しました。");
+            const url = "http://10.1.248.160/shopping/shopping.html";
+            window.location.href = url;
+        }
+
+
+        displayCartItems();
+
+    </script>
+
+</body>
+
+</html>

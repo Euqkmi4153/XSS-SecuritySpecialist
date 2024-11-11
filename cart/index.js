@@ -44,8 +44,9 @@ function goBack() {
 }
 
 
-function purchase() {
+function purchase(page) {
     alert("購入が完了しました。");
+    location.href = page;
 }
 
 

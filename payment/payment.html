@@ -75,7 +75,12 @@
     <script>
         function goBack() {
             alert("前のページに戻ります。");
-            // 実際のシステムでは、ここで戻る処理を実装
+            const url = "http://10.1.248.160/shopping/shopping.html"
+            window.location.href = url;
+        }
+        function Order() {
+            const url = "http://10.1.248.160/confirm/confirm.html";
+            window.location.href = url;
         }
 
         function submitOrder() {
@@ -113,6 +118,7 @@
 
             alert("注文が完了しました！");
             // 実際のシステムでは、ここで注文をサーバーに送信する処理を実装
+            Order();
         }
     </script>
 
